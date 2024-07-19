@@ -1,4 +1,4 @@
-const HTTP_STATUS = {
+export const HTTP_STATUS = {
   OK: 200,
   CREATED: 201,
   BAD_REQUEST: 400,
@@ -8,7 +8,7 @@ const HTTP_STATUS = {
   INTERNAL_SERVER_ERROR: 500,
 };
 
-const ERROR_MSG = {
+export const ERROR_MSG = {
   PRODUCT_NAME_NOT_FOUND: '"name" is required',
   PRODUCT_NAME_LENGHT_NOT_VALID: '"name" length must be at least 5 characters long',
   PRODUCT_NAME_NOT_VALID: '"name" must be a string',
@@ -20,14 +20,8 @@ const ERROR_MSG = {
   USER_ID_NOT_FOUND: '"userId" not found',
 };
 
-const ROUTE = {
+export const ROUTE = {
   PRODUCTS: '/products',
   USER: '/users',
   LOGIN: '/login',
-};
-
-module.exports = { 
-  HTTP_STATUS,
-  ERROR_MSG,
-  ROUTE,
 };

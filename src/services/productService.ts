@@ -14,6 +14,18 @@ async function createProduct(createNewProduct: ProductInputtableTypes): Promise<
   return newProduct;
 }
 
+async function listProducts(): Promise<Product[]> {
+  const products = await ProductModel.findAll();
+
+  return products.map((product) => ({
+    id: product.getDataValue('id'),
+    name: product.getDataValue('name'),
+    price: product.getDataValue('price'),
+    userId: product.getDataValue('userId'),
+  }));
+}
+
 export default {
   createProduct,
+  listProducts,
 };

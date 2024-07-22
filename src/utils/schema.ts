@@ -21,6 +21,7 @@ const productSchema = Joi.object({
   userId: Joi.number()
     .integer()
     .required()
+    .prefs({ convert: false })
     .messages({
       'number.base': ERROR_MSG.USER_ID_NOT_VALID,
       'number.required': ERROR_MSG.USER_ID_REQUIRED,

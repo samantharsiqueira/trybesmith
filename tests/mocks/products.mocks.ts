@@ -4,7 +4,7 @@ const addNewProduct = {
   userId: 1,
 }
 
-const addNewProductResolves = {
+const addNewProductWithId = {
   id: 1,
   name: "Martelo de Thor",
   price: "30 peças de ouro",
@@ -34,6 +34,6 @@ const findAllProducts = [
 
 export {
   addNewProduct,
-  addNewProductResolves,
+  addNewProductWithId ,
   findAllProducts,
 };

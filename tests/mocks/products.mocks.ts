@@ -43,6 +43,7 @@ const findAllProductsWithMethods = findAllProducts.map(product => ({
   getDataValue: (key: keyof ProductData) => product[key],
 }));
 
+
 export {
   addNewProduct,
   addNewProductWithId,

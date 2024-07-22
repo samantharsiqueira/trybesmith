@@ -1,12 +1,18 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 import { mockUsers } from '../../mocks/user.mocks';
-import { findAllProducts } from '../../mocks/products.mocks';
 import userController from '../../../src/controllers/userController';
 import userService from '../../../src/services/userService';
 import UserModel from '../../../src/database/models/user.model';
 import ProductModel from '../../../src/database/models/product.model';
 
+// Sem o dataValues eu nao consegui resolver o erro 
+//   TypeError: Cannot read properties of undefined (reading 'userId')
+const findAllProducts = [
+  { dataValues: { id: 1, userId: 1 } },
+  { dataValues: { id: 2, userId: 1 } },
+  { dataValues: { id: 3, userId: 2 } },
+];
 describe('UsersService', function () {
   beforeEach(function () { sinon.restore(); });
 
@@ -57,4 +63,3 @@ describe('UsersService', function () {
   });
 
 });
-//   TypeError: Cannot read properties of undefined (reading 'userId')

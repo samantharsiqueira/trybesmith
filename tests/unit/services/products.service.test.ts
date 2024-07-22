@@ -8,7 +8,13 @@ import productService from '../../../src/services/productService';
 describe('ProductsService', function () {
   beforeEach(function () { sinon.restore(); });
   it('should create a new product', async function () {
-    sinon.stub(ProductModel, 'create').resolves(addNewProductWithId as any);
+    // Mock para ProductModel.create que retorna um objeto com o método getDataValue
+    // TypeError: newProductInstance.getDataValue is not a function
+    const newProductInstance = {
+      getDataValue: (key: string) => addNewProductWithId[key as keyof typeof addNewProductWithId],
+    };
+
+    sinon.stub(ProductModel, 'create').resolves(newProductInstance as any);
 
     const result = await productService.createProduct(addNewProduct);
     expect(result).to.deep.equal(addNewProductWithId);

@@ -1,5 +1,6 @@
 import Joi from 'joi';
 import { ERROR_MSG } from './index';
+
 const productSchema = Joi.object({
   name: Joi.string()
     .min(3)

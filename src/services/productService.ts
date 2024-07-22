@@ -1,5 +1,6 @@
 import ProductModel, { ProductInputtableTypes } from '../database/models/product.model';
 import { Product } from '../types/Product';
+import UserModel from '../database/models/user.model';
 
 async function createProduct(createNewProduct: ProductInputtableTypes): Promise<Product> {
   const newProductInstance = await ProductModel.create(createNewProduct);
@@ -25,7 +26,13 @@ async function listProducts(): Promise<Product[]> {
   }));
 }
 
+async function userExists(userId: number): Promise<boolean> {
+  const user = await UserModel.findByPk(userId);
+  return user !== null;
+}
+
 export default {
   createProduct,
   listProducts,
+  userExists,
 };

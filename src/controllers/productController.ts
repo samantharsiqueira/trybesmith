@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
 import productService from '../services/productService';
+import productSchema from '../utils/schema';
+import { ERROR_MSG, HTTP_STATUS } from '../utils';
 
 async function createProduct(req: Request, res: Response): Promise<void> {
   try {

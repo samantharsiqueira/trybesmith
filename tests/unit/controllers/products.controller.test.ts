@@ -2,6 +2,13 @@ import chai, { expect } from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import { Request, Response } from 'express';
+/* import { 
+  addNewProduct,
+  addNewProductWithId,
+  findAllProducts, 
+  findAllProductsWithMethods,
+   } from '../../mocks/products.mocks'; */ 
+    // Preciso refatorar porque repeti muito o codigo e nao chamei os mocks direito pq tava dando erro na tipagem dos retornos.
 
 chai.use(sinonChai);
 const productController = require('../../../src/controllers/productController').default;

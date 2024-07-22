@@ -23,7 +23,7 @@ const productSchema = Joi.object({
     .required()
     .messages({
       'number.base': ERROR_MSG.USER_ID_NOT_VALID,
-      'number.empty': ERROR_MSG.USER_ID_REQUIRED,
+      'number.required': ERROR_MSG.USER_ID_REQUIRED,
       'number.integer': ERROR_MSG.USER_ID_NOT_VALID,
     }),
 });

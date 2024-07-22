@@ -3,22 +3,37 @@ import productService from '../services/productService';
 import productSchema from '../utils/schema';
 import { ERROR_MSG, HTTP_STATUS } from '../utils';
 
-async function createProduct(req: Request, res: Response): Promise<void> {
+async function createProduct(req: Request, res: Response): Promise<Response> {
+  const { error: validationError } = productSchema.validate(req.body);
+  if (validationError) {
+    const { message } = validationError.details[0];
+    const status = message
+      .includes('required') ? HTTP_STATUS.BAD_REQUEST : HTTP_STATUS.UNPROCESSABLE_ENTITY;
+    return res.status(status).json({ message });
+  }
+
+  const { name, price, userId } = req.body;
+
+  const userExists = await productService.userExists(userId); if (!userExists) {
+    return res.status(HTTP_STATUS.UNPROCESSABLE_ENTITY)
+      .json({ message: ERROR_MSG.USER_ID_NOT_FOUND });
+  }
+
   try {
-    const { name, price, userId } = req.body;
     const newProduct = await productService.createProduct({ name, price, userId });
-    res.status(201).json(newProduct);
+    return res.status(HTTP_STATUS.CREATED).json(newProduct);
   } catch (error) {
-    res.status(500).json({ error: 'Erro ao criar o produto' });
+    return res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({ error: 'Erro ao criar o produto' });
   }
 }
 
-async function listProducts(req: Request, res: Response): Promise<void> {
+async function listProducts(req: Request, res: Response): Promise<Response> {
   try {
     const products = await productService.listProducts();
-    res.status(200).json(products);
+    return res.status(HTTP_STATUS.OK).json(products);
   } catch (error) {
-    res.status(500).json({ error: 'Erro ao listar os produtos' });
+    return res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
+      .json({ error: 'Erro ao listar os produtos' });
   }
 }
 

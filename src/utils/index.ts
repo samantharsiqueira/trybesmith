@@ -10,7 +10,7 @@ export const HTTP_STATUS = {
 
 export const ERROR_MSG = {
   PRODUCT_NAME_NOT_FOUND: '"name" is required',
-  PRODUCT_NAME_LENGHT_NOT_VALID: '"name" length must be at least 5 characters long',
+  PRODUCT_NAME_LENGHT_NOT_VALID: '"name" length must be at least 3 characters long',
   PRODUCT_NAME_NOT_VALID: '"name" must be a string',
   PRICE_NOT_FOUND: '"price" is required',
   PRICE_NAME_NOT_VALID: '"price" must be a string',
@@ -18,6 +18,8 @@ export const ERROR_MSG = {
   USER_ID_REQUIRED: '"userId" is required',
   USER_ID_NOT_VALID: '"userId" must be a number',
   USER_ID_NOT_FOUND: '"userId" not found',
+  USERNAME_PASSWORD_REQUIRED: '"username" and "password" are required',
+  USERNAME_PASSWORD_INVALID: 'Username or password invalid',
 };
 
 export const ROUTE = {
